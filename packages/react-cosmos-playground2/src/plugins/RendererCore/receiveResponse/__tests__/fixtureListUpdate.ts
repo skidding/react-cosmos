@@ -1,10 +1,10 @@
 import { waitFor } from '@testing-library/dom';
+import { FixtureList, RendererId } from 'react-cosmos-shared2/renderer';
 import { loadPlugins, resetPlugins } from 'react-plugin';
-import { RendererId } from 'react-cosmos-shared2/renderer';
 import {
   getRendererCoreMethods,
-  mockRouter,
   mockNotifications,
+  mockRouter,
 } from '../../../../testHelpers/pluginMocks';
 import {
   createFixtureListUpdateResponse,
@@ -15,7 +15,11 @@ beforeEach(() => jest.isolateModules(() => require('../..')));
 
 afterEach(resetPlugins);
 
-const fixtures = { 'ein.js': null, 'zwei.js': null, 'drei.js': null };
+const fixtures: FixtureList = {
+  'ein.js': { type: 'single' },
+  'zwei.js': { type: 'single' },
+  'drei.js': { type: 'single' },
+};
 
 function registerTestPlugins() {
   mockRouter({
@@ -35,7 +39,7 @@ function mockFixtureListUpdateResponse(rendererId: RendererId) {
   methods.receiveResponse(
     createFixtureListUpdateResponse(rendererId, {
       ...fixtures,
-      'vier.js': null,
+      'vier.js': { type: 'single' },
     })
   );
 }
@@ -48,7 +52,7 @@ it('updates fixtures in renderer state', async () => {
   await waitFor(() =>
     expect(getRendererCoreMethods().getFixtures()).toEqual({
       ...fixtures,
-      'vier.js': null,
+      'vier.js': { type: 'single' },
     })
   );
 });

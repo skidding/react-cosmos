@@ -10,9 +10,10 @@ import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { HelloMessageCls } from '../testHelpers/components';
 import { getProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtureId = { path: 'first', name: null };
+const fixtureId = { path: 'first' };
 
 let refs: React.Component[] = [];
 beforeEach(() => {
@@ -21,18 +22,19 @@ beforeEach(() => {
 
 // Intentionally create new ref function on every update to get the ref
 // to be called more than once even if the component instance is reused
-const getFixtures = () => ({
-  first: (
-    <HelloMessageCls
-      ref={elRef => {
-        if (elRef) {
-          refs.push(elRef);
-        }
-      }}
-      name="Bianca"
-    />
-  ),
-});
+const getFixtures = () =>
+  wrapFixtures({
+    first: (
+      <HelloMessageCls
+        ref={elRef => {
+          if (elRef) {
+            refs.push(elRef);
+          }
+        }}
+        name="Bianca"
+      />
+    ),
+  });
 
 testFixtureLoader(
   'transitions props (reuses component instance)',

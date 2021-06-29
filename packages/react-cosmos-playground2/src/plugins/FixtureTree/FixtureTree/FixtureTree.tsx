@@ -1,4 +1,3 @@
-import { isEqual } from 'lodash';
 import React, { RefObject } from 'react';
 import { FixtureTreeNode } from 'react-cosmos-shared2/fixtureTree';
 import { FixtureId } from 'react-cosmos-shared2/renderer';
@@ -40,8 +39,24 @@ export const FixtureTree = React.memo(function FixtureTree({
         renderNode={({ node, name, parents, expanded, onToggle }) => {
           const { data, children } = node;
 
+          if (data.type === 'unknown') {
+            const { fixturePath } = data;
+            const selected = selectedFixtureId?.path === fixturePath;
+            return (
+              <FixtureButton
+                name={name}
+                fixtureId={{ path: fixturePath }}
+                indentLevel={parents.length}
+                selected={selected}
+                selectedRef={selectedRef}
+                lazy
+                onSelect={onSelect}
+              />
+            );
+          }
+
           if (data.type === 'fixture') {
-            const selected = isEqual(selectedFixtureId, data.fixtureId);
+            const selected = selectedFixtureId?.path === data.fixtureId.path;
             return (
               <FixtureButton
                 name={name}

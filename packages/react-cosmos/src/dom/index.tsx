@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  ReactDecoratorsByPath,
-  ReactFixtureExportsByPath,
+  ReactDecorators,
+  ReactFixtureWrappers,
 } from 'react-cosmos-shared2/react';
 import { render } from 'react-dom';
 import { DomRendererConfig } from '../shared/rendererConfig';
@@ -15,8 +15,8 @@ export { rendererId, rendererConnect };
 
 type Args = {
   rendererConfig: DomRendererConfig;
-  fixtures: ReactFixtureExportsByPath;
-  decorators: ReactDecoratorsByPath;
+  fixtures: ReactFixtureWrappers;
+  decorators: ReactDecorators;
   onErrorReset?: () => unknown;
 };
 export function mountDomRenderer({

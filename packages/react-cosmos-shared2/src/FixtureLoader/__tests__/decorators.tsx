@@ -2,15 +2,16 @@ import retry from '@skidding/async-retry';
 import React from 'react';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 type Props = {
   children: React.ReactNode;
 };
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   'src/foo/__fixtures__/default.js': 'Hello!',
-};
+});
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18051
 const decorators = {
   'src/decorator.js': ({ children }: Props) => <>Decorated at src{children}</>,
@@ -29,7 +30,7 @@ testFixtureLoader(
     const [path] = Object.keys(fixtures);
     await selectFixture({
       rendererId,
-      fixtureId: { path, name: null },
+      fixtureId: { path },
       fixtureState: {},
     });
     // "src/bar/decorator" should be omitted because it's not a placed in

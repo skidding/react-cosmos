@@ -1,11 +1,9 @@
 import { get, set } from 'lodash';
-import { FixtureNamesByPath } from '../../renderer';
+import { FixtureList, FixtureListItem } from '../../renderer';
 import { addTreeNodeChild } from '../../util';
 import { FixtureTreeNode } from '../shared/types';
 
-export function createRawFixtureTree(
-  fixtures: FixtureNamesByPath
-): FixtureTreeNode {
+export function createRawFixtureTree(fixtures: FixtureList): FixtureTreeNode {
   const rootNode: FixtureTreeNode = {
     data: { type: 'fileDir' },
   };
@@ -20,24 +18,32 @@ export function createRawFixtureTree(
 function addFixturePathToTree(
   rootNode: FixtureTreeNode,
   fixturePath: string,
-  fixtureNames: null | string[]
+  fixtureItem: FixtureListItem
 ) {
   const { parents, fileName } = parseFixturePath(fixturePath);
 
-  if (!fixtureNames)
-    return injectNode(rootNode, parents, fileName, {
+  if (fixtureItem.type == 'unknown') {
+    injectNode(rootNode, parents, fileName, {
       data: {
-        type: 'fixture',
-        fixtureId: { path: fixturePath, name: null },
+        type: 'unknown',
+        fixturePath,
       },
     });
-
-  injectNode(rootNode, parents, fileName, {
-    data: {
-      type: 'multiFixture',
-      fixtureIds: createFixtureIds(fixturePath, fixtureNames),
-    },
-  });
+  } else if (fixtureItem.type == 'single') {
+    injectNode(rootNode, parents, fileName, {
+      data: {
+        type: 'fixture',
+        fixtureId: { path: fixturePath },
+      },
+    });
+  } else if (fixtureItem.type == 'multi') {
+    injectNode(rootNode, parents, fileName, {
+      data: {
+        type: 'multiFixture',
+        fixtureIds: createFixtureIds(fixturePath, fixtureItem.fixtureNames),
+      },
+    });
+  }
 }
 
 function parseFixturePath(fixturePath: string) {

@@ -2,13 +2,14 @@ import { waitFor } from '@testing-library/dom';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { createFixtureTree } from 'react-cosmos-shared2/fixtureTree';
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 import { FixtureTree } from './FixtureTree';
 
-const fixtures = {
-  'ein.js': null,
-  'zwei.js': null,
-  'nested/drei.js': null,
-  'deeply/nested/vier.js': null,
+const fixtures: FixtureList = {
+  'ein.js': { type: 'single' },
+  'zwei.js': { type: 'single' },
+  'nested/drei.js': { type: 'single' },
+  'deeply/nested/vier.js': { type: 'single' },
 };
 const rootNode = createFixtureTree({
   fixtures,

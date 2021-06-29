@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 import { loadPlugins, resetPlugins, Slot } from 'react-plugin';
 import { NavRowSlot } from '../../shared/slots/NavRowSlot';
 import {
@@ -13,10 +14,13 @@ beforeEach(() => jest.isolateModules(() => require('.')));
 
 afterEach(resetPlugins);
 
-const fixtures = {
-  'src/__fixtures__/fixture1.ts': null,
-  'src/__fixtures__/fixture2.ts': null,
-  'src/foobar/index.fixture.ts': ['fixture3a', 'fixture3b'],
+const fixtures: FixtureList = {
+  'src/__fixtures__/fixture1.ts': { type: 'single' },
+  'src/__fixtures__/fixture2.ts': { type: 'single' },
+  'src/foobar/index.fixture.ts': {
+    type: 'multi',
+    fixtureNames: ['fixture3a', 'fixture3b'],
+  },
 };
 
 function registerTestPlugins() {

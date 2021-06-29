@@ -1,4 +1,5 @@
 import { waitFor } from '@testing-library/dom';
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 import { loadPlugins, resetPlugins } from 'react-plugin';
 import {
   getRendererCoreMethods,
@@ -11,8 +12,8 @@ beforeEach(() => jest.isolateModules(() => require('../..')));
 
 afterEach(resetPlugins);
 
-const fixtures = { 'ein.js': null };
-const fixtureId = { path: 'zwei.js', name: null };
+const fixtures: FixtureList = { 'ein.js': { type: 'single' } };
+const fixtureId = { path: 'zwei.js' };
 const fixtureState = { props: [] };
 
 function registerTestPlugins() {

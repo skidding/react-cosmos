@@ -5,9 +5,10 @@ import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { Counter } from '../testHelpers/components';
 import { anyClassState, anyProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: (
     <>
       <StateMock state={{ count: 5 }}>
@@ -15,8 +16,8 @@ const fixtures = {
       </StateMock>
     </>
   ),
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'transitions Fragment from single to multi children',
@@ -25,7 +26,7 @@ testFixtureLoader(
     await selectFixture({ rendererId, fixtureId, fixtureState: {} });
     update({
       rendererId,
-      fixtures: {
+      fixtures: wrapFixtures({
         // This is a very tricky case. When fragments have one child,
         // props.children will be that child. But when fragments have
         // two or more children, props.children will be an array. When
@@ -44,7 +45,7 @@ testFixtureLoader(
             </StateMock>
           </>
         ),
-      },
+      }),
     });
     // Do not remove this line: It captures a regression regarding an error
     // that occurred when component state was read asynchronously

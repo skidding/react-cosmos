@@ -10,7 +10,7 @@ afterEach(() => {
   resetUrl();
 });
 
-const fixtureId = { path: 'zwei.js', name: null };
+const fixtureId = { path: 'zwei.js' };
 
 it('updates selected fixture ID', async () => {
   loadPlugins();

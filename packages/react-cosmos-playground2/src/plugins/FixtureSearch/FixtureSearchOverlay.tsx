@@ -12,7 +12,7 @@ import {
   FlatFixtureTreeItem,
   flattenFixtureTree,
 } from 'react-cosmos-shared2/fixtureTree';
-import { FixtureId, FixtureNamesByPath } from 'react-cosmos-shared2/renderer';
+import { FixtureId, FixtureList } from 'react-cosmos-shared2/renderer';
 import styled from 'styled-components';
 import {
   black60,
@@ -41,7 +41,7 @@ type Props = {
   searchText: string;
   fixturesDir: string;
   fixtureFileSuffix: string;
-  fixtures: FixtureNamesByPath;
+  fixtures: FixtureList;
   selectedFixtureId: null | FixtureId;
   onSetSearchText: (searchText: string) => unknown;
   onClose: () => unknown;

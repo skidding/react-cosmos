@@ -1,6 +1,6 @@
 import {
-  RendererReadyResponse,
   RendererErrorResponse,
+  RendererReadyResponse,
   SelectFixtureRequest,
 } from 'react-cosmos-shared2/renderer';
 
@@ -8,7 +8,7 @@ export const selectFixtureMsg: SelectFixtureRequest = {
   type: 'selectFixture',
   payload: {
     rendererId: 'mockRendererId',
-    fixtureId: { path: 'mockFixturePath', name: null },
+    fixtureId: { path: 'mockFixturePath' },
     fixtureState: {},
   },
 };
@@ -17,7 +17,11 @@ export const rendererReadyMsg: RendererReadyResponse = {
   type: 'rendererReady',
   payload: {
     rendererId: 'mockRendererId',
-    fixtures: { 'ein.js': null, 'zwei.js': null, 'drei.js': null },
+    fixtures: {
+      'ein.js': { type: 'single' },
+      'zwei.js': { type: 'single' },
+      'drei.js': { type: 'single' },
+    },
   },
 };
 

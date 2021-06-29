@@ -13,7 +13,7 @@ afterEach(() => {
   resetUrl();
 });
 
-const fixtureId = { path: 'zwei.js', name: null };
+const fixtureId = { path: 'zwei.js' };
 
 it('emits "fixtureChange" event on "fixtureId" URL param change', () => {
   const { fixtureChange } = onRouter();

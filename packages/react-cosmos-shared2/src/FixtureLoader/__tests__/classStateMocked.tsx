@@ -14,16 +14,17 @@ import {
   anyProps,
   getClassState,
 } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: (
     <StateMock state={{ count: 5 }}>
       <Counter />
     </StateMock>
   ),
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'captures mocked state',
@@ -183,13 +184,13 @@ testFixtureLoader(
     await retry(() => expect(renderer.toJSON()).toBe('50 times'));
     update({
       rendererId,
-      fixtures: {
+      fixtures: wrapFixtures({
         first: (
           <StateMock state={{ count: 5 }}>
             <CoolCounter />
           </StateMock>
         ),
-      },
+      }),
     });
     expect(renderer.toJSON()).toBe('50 timez');
   }
@@ -224,13 +225,13 @@ testFixtureLoader(
     // When the fixture changes the fixture state follows along
     update({
       rendererId,
-      fixtures: {
+      fixtures: wrapFixtures({
         first: (
           <StateMock state={{ count: 50 }}>
             <Counter />
           </StateMock>
         ),
-      },
+      }),
     });
     await fixtureStateChange({
       rendererId,
@@ -269,11 +270,11 @@ testFixtureLoader(
     });
     update({
       rendererId,
-      fixtures: {
+      fixtures: wrapFixtures({
         // Counter element from fixture is gone, and so should the
         // fixture state related to it.
         first: 'No counts for you.',
-      },
+      }),
     });
     expect(renderer.toJSON()).toBe('No counts for you.');
     await fixtureStateChange({

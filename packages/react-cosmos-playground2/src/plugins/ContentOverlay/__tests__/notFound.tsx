@@ -15,7 +15,7 @@ afterEach(resetPlugins);
 function registerTestPlugins() {
   mockStorage();
   mockRouter({
-    getSelectedFixtureId: () => ({ path: 'foo.js', name: null }),
+    getSelectedFixtureId: () => ({ path: 'foo.js' }),
   });
   mockRendererCore({
     isRendererConnected: () => true,

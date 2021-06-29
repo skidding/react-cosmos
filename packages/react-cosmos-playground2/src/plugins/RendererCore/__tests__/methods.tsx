@@ -1,17 +1,22 @@
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 import { loadPlugins, resetPlugins } from 'react-plugin';
 import {
   getRendererCoreMethods,
-  mockRouter,
   mockNotifications,
+  mockRouter,
 } from '../../../testHelpers/pluginMocks';
-import { mockRendererReady, mockFixtureStateChange } from '../testHelpers';
+import { mockFixtureStateChange, mockRendererReady } from '../testHelpers';
 
 beforeEach(() => jest.isolateModules(() => require('..')));
 
 afterEach(resetPlugins);
 
-const fixtures = { 'ein.js': null, 'zwei.js': null, 'drei.js': null };
-const fixtureId = { path: 'foo.js', name: null };
+const fixtures: FixtureList = {
+  'ein.js': { type: 'single' },
+  'zwei.js': { type: 'single' },
+  'drei.js': { type: 'single' },
+};
+const fixtureId = { path: 'foo.js' };
 const fixtureState = { props: [] };
 
 function registerTestPlugins() {
@@ -50,9 +55,9 @@ it('returns fixtures', () => {
   registerTestPlugins();
   loadTestPlugins();
   expect(getRendererCoreMethods().getFixtures()).toEqual({
-    'ein.js': null,
-    'zwei.js': null,
-    'drei.js': null,
+    'ein.js': { type: 'single' },
+    'zwei.js': { type: 'single' },
+    'drei.js': { type: 'single' },
   });
 });
 

@@ -1,8 +1,12 @@
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = { first: { a: null, b: null, c: null }, second: null };
+const fixtures = wrapFixtures({
+  first: { a: null, b: null, c: null },
+  second: null,
+});
 
 testFixtureLoader(
   'posts ready response on mount',
@@ -10,7 +14,10 @@ testFixtureLoader(
   async ({ rendererReady }) => {
     await rendererReady({
       rendererId,
-      fixtures: { first: ['a', 'b', 'c'], second: null },
+      fixtures: {
+        first: { type: 'multi', fixtureNames: ['a', 'b', 'c'] },
+        second: { type: 'single' },
+      },
     });
   }
 );

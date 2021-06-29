@@ -6,6 +6,7 @@ import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { SuffixCounter } from '../testHelpers/components';
 import { anyClassState, anyProps, getProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 let counterRef: null | SuffixCounter = null;
 beforeEach(() => {
@@ -13,19 +14,20 @@ beforeEach(() => {
 });
 
 const rendererId = uuid();
-const getFixtures = () => ({
-  first: (
-    <SuffixCounter
-      ref={elRef => {
-        if (elRef) {
-          counterRef = elRef;
-        }
-      }}
-      suffix="times"
-    />
-  ),
-});
-const fixtureId = { path: 'first', name: null };
+const getFixtures = () =>
+  wrapFixtures({
+    first: (
+      <SuffixCounter
+        ref={elRef => {
+          if (elRef) {
+            counterRef = elRef;
+          }
+        }}
+        suffix="times"
+      />
+    ),
+  });
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'keeps props when state changes',

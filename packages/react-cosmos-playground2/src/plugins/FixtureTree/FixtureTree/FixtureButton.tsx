@@ -11,6 +11,7 @@ type Props = {
   indentLevel: number;
   selected: boolean;
   selectedRef: RefObject<HTMLElement>;
+  lazy?: boolean;
   onSelect: (fixtureId: FixtureId) => unknown;
 };
 
@@ -20,6 +21,7 @@ export function FixtureButton({
   indentLevel,
   selected,
   selectedRef,
+  lazy,
   onSelect,
 }: Props) {
   return (
@@ -29,7 +31,7 @@ export function FixtureButton({
         indentLevel={indentLevel}
         selected={selected}
       >
-        <Name>{name}</Name>
+        <Name style={{ opacity: lazy ? 0.5 : 1 }}>{name}</Name>
       </FixtureTreeItem>
     </FixtureLink>
   );

@@ -1,7 +1,7 @@
 import until from 'async-until';
 import { ReactTestRenderer } from 'react-test-renderer';
 import { FixtureState } from '../../fixtureState';
-import { ReactDecoratorsByPath, ReactFixtureExportsByPath } from '../../react';
+import { ReactDecorators, ReactFixtureWrappers } from '../../react';
 import {
   FixtureId,
   FixtureListUpdateResponse,
@@ -21,9 +21,9 @@ type GetMessages = () => Message[];
 
 export type FixtureLoaderTestArgs = {
   rendererId: RendererId;
-  fixtures: ReactFixtureExportsByPath;
+  fixtures: ReactFixtureWrappers;
   selectedFixtureId?: null | FixtureId;
-  decorators?: ReactDecoratorsByPath;
+  decorators?: ReactDecorators;
   onErrorReset?: () => unknown;
 };
 

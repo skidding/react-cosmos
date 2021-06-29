@@ -4,6 +4,7 @@ import { ReactTestRenderer, ReactTestRendererJSON } from 'react-test-renderer';
 import { createValue } from '../../fixtureState';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 import { useValue } from '../useValue';
 
 function createFixtures({ defaultValue }: { defaultValue: boolean }) {
@@ -13,14 +14,14 @@ function createFixtures({ defaultValue }: { defaultValue: boolean }) {
       <button onClick={() => setToggled(!toggled)}>{String(toggled)}</button>
     );
   };
-  return {
+  return wrapFixtures({
     first: <MyComponent />,
-  };
+  });
 }
 
 const rendererId = uuid();
 const fixtures = createFixtures({ defaultValue: false });
-const fixtureId = { path: 'first', name: null };
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'renders fixture',

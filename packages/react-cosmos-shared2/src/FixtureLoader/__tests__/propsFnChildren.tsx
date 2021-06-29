@@ -6,6 +6,7 @@ import { FixtureCapture } from '../FixtureCapture';
 import { testFixtureLoader } from '../testHelpers';
 import { HelloMessage } from '../testHelpers/components';
 import { anyProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 function Wrap({ children }: { children: () => React.ReactNode }) {
   return <>{children()}</>;
@@ -13,7 +14,7 @@ function Wrap({ children }: { children: () => React.ReactNode }) {
 Wrap.cosmosCapture = false;
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: (
     <>
       <Wrap>{() => <HelloMessage name="Bianca" />}</Wrap>
@@ -26,8 +27,8 @@ const fixtures = {
       </Wrap>
     </>
   ),
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'captures props from render callback',

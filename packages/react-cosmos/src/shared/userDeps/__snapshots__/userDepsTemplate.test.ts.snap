@@ -9,9 +9,6 @@ exports[`should generate user deps module with absolute paths 1`] = `
 import '/Users/ovidiu/cosmos/src/polyfills.ts';
 import '/Users/ovidiu/cosmos/src/global.css';
 
-import fixture0 from '/Users/ovidiu/cosmos/src/Counter/Counter.fixture.tsx';
-import fixture1 from '/Users/ovidiu/cosmos/src/CounterButton/CounterButton.fixture.tsx';
-
 import decorator0 from '/Users/ovidiu/cosmos/src/cosmos.decorator.tsx';
 
 export const rendererConfig = {
@@ -19,8 +16,8 @@ export const rendererConfig = {
 };
 
 export const fixtures = {
-  'src/Counter/Counter.fixture.tsx': fixture0,
-  'src/CounterButton/CounterButton.fixture.tsx': fixture1
+  'src/Counter/Counter.fixture.tsx': { lazy: true, getModule: () => import('/Users/ovidiu/cosmos/src/Counter/Counter.fixture.tsx') },
+  'src/CounterButton/CounterButton.fixture.tsx': { lazy: true, getModule: () => import('/Users/ovidiu/cosmos/src/CounterButton/CounterButton.fixture.tsx') }
 };
 
 export const decorators = {
@@ -38,9 +35,6 @@ exports[`should generate user deps module with relative paths 1`] = `
 import './polyfills.ts';
 import './global.css';
 
-import fixture0 from './Counter/Counter.fixture.tsx';
-import fixture1 from './CounterButton/CounterButton.fixture.tsx';
-
 import decorator0 from './cosmos.decorator.tsx';
 
 export const rendererConfig = {
@@ -48,8 +42,8 @@ export const rendererConfig = {
 };
 
 export const fixtures = {
-  'src/Counter/Counter.fixture.tsx': fixture0,
-  'src/CounterButton/CounterButton.fixture.tsx': fixture1
+  'src/Counter/Counter.fixture.tsx': { lazy: true, getModule: () => import('./Counter/Counter.fixture.tsx') },
+  'src/CounterButton/CounterButton.fixture.tsx': { lazy: true, getModule: () => import('./CounterButton/CounterButton.fixture.tsx') }
 };
 
 export const decorators = {

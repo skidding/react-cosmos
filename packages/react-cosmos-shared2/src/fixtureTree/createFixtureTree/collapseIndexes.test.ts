@@ -11,7 +11,7 @@ it('collapses index fixture', () => {
           index: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/index.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/index.fixture.js' },
             },
           },
         },
@@ -24,7 +24,7 @@ it('collapses index fixture', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'Dashboard/index.fixture.js', name: null },
+          fixtureId: { path: 'Dashboard/index.fixture.js' },
         },
       },
     },
@@ -79,13 +79,13 @@ it('does not collapse index fixture with sibling', () => {
           index: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/index.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/index.fixture.js' },
             },
           },
           Settings: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/Settings.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/Settings.fixture.js' },
             },
           },
         },
@@ -101,13 +101,13 @@ it('does not collapse index fixture with sibling', () => {
           index: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/index.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/index.fixture.js' },
             },
           },
           Settings: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/Settings.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/Settings.fixture.js' },
             },
           },
         },
@@ -127,7 +127,7 @@ it('only collapses index fixture without sibling', () => {
           index: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/index.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/index.fixture.js' },
             },
           },
           Settings: {
@@ -136,10 +136,7 @@ it('only collapses index fixture without sibling', () => {
               index: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'Dashboard/Settings/index.fixture.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'Dashboard/Settings/index.fixture.js' },
                 },
               },
             },
@@ -157,16 +154,13 @@ it('only collapses index fixture without sibling', () => {
           index: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/index.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/index.fixture.js' },
             },
           },
           Settings: {
             data: {
               type: 'fixture',
-              fixtureId: {
-                path: 'Dashboard/Settings/index.fixture.js',
-                name: null,
-              },
+              fixtureId: { path: 'Dashboard/Settings/index.fixture.js' },
             },
           },
         },

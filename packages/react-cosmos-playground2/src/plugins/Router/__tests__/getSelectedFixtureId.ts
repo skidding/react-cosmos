@@ -10,7 +10,7 @@ afterEach(() => {
   resetUrl();
 });
 
-const fixtureId = { path: 'zwei.js', name: null };
+const fixtureId = { path: 'zwei.js' };
 
 it('returns fixtureId', async () => {
   pushUrlParams({ fixtureId: JSON.stringify(fixtureId) });

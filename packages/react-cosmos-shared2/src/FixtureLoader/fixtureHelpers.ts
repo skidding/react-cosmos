@@ -3,24 +3,20 @@ import { isMultiFixture, ReactFixtureExport, ReactFixtureMap } from '../react';
 
 export function getFixture(
   fixtureExport: ReactFixtureExport,
-  fixtureName: null | string
+  fixtureName?: string
 ): void | React.ReactNode {
-  if (fixtureName === null) {
-    if (isMultiFixture(fixtureExport)) {
-      // Fixture name missing in multi fixture
-      return;
-    }
-
-    return fixtureExport;
-  }
-
   if (!isMultiFixture(fixtureExport)) {
-    // Fixture name not found in single fixture
-    return;
+    return fixtureExport;
   }
 
   // FIXME: Why does fixtureExport need to be cast as ReactFixtureMap when
   // the type predicate returned by isMultiFixture already ensures it?
   const multiFixtureExport: ReactFixtureMap = fixtureExport;
-  return multiFixtureExport[fixtureName];
+
+  if (fixtureName) {
+    return multiFixtureExport[fixtureName];
+  }
+
+  const fixtureNames = Object.keys(multiFixtureExport);
+  return multiFixtureExport[fixtureNames[0]];
 }

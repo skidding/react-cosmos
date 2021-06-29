@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { createFixtureTree } from 'react-cosmos-shared2/fixtureTree';
-import { FixtureNamesByPath } from 'react-cosmos-shared2/renderer';
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 import styled from 'styled-components';
 import { IconButton32 } from '../../shared/buttons';
 import { grey128, grey32, white10 } from '../../shared/colors';
@@ -15,7 +15,7 @@ import {
 type Props = {
   fixturesDir: string;
   fixtureFileSuffix: string;
-  fixtures: FixtureNamesByPath;
+  fixtures: FixtureList;
   expansion: TreeExpansion;
   setExpansion: (treeExpansion: TreeExpansion) => unknown;
 };

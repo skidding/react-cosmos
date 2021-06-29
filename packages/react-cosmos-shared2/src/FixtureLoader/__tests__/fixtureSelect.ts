@@ -1,12 +1,13 @@
 import retry from '@skidding/async-retry';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: { one: 'First' },
   second: 'Second',
-};
+});
 
 testFixtureLoader(
   'renders selected fixture',
@@ -14,7 +15,7 @@ testFixtureLoader(
   async ({ renderer, selectFixture }) => {
     await selectFixture({
       rendererId,
-      fixtureId: { path: 'second', name: null },
+      fixtureId: { path: 'second' },
       fixtureState: {},
     });
     await retry(() => expect(renderer.toJSON()).toBe('Second'));
@@ -40,12 +41,12 @@ testFixtureLoader(
   async ({ selectFixture, fixtureStateChange }) => {
     await selectFixture({
       rendererId,
-      fixtureId: { path: 'second', name: null },
+      fixtureId: { path: 'second' },
       fixtureState: {},
     });
     await fixtureStateChange({
       rendererId,
-      fixtureId: { path: 'second', name: null },
+      fixtureId: { path: 'second' },
       fixtureState: {
         props: [],
       },
@@ -74,7 +75,7 @@ testFixtureLoader(
   async ({ renderer, selectFixture }) => {
     await selectFixture({
       rendererId: 'foobar',
-      fixtureId: { path: 'second', name: null },
+      fixtureId: { path: 'second' },
       fixtureState: {},
     });
     await retry(() => expect(renderer.toJSON()).toBe('No fixture selected.'));
@@ -87,7 +88,7 @@ testFixtureLoader(
   async ({ renderer, selectFixture }) => {
     await selectFixture({
       rendererId,
-      fixtureId: { path: 'third', name: null },
+      fixtureId: { path: 'third' },
       fixtureState: {},
     });
     await retry(() =>

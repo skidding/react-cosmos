@@ -1,8 +1,8 @@
-import { ReactDecoratorsByPath, ReactDecorator } from './shared';
+import { ReactDecorators, ReactDecorator } from './shared';
 
 export function getSortedDecoratorsForFixturePath(
   fixturePath: string,
-  decoratorsByPath: ReactDecoratorsByPath
+  decoratorsByPath: ReactDecorators
 ): ReactDecorator[] {
   return getSortedDecorators(
     getDecoratorsForFixturePath(decoratorsByPath, fixturePath)
@@ -10,7 +10,7 @@ export function getSortedDecoratorsForFixturePath(
 }
 
 function getDecoratorsForFixturePath(
-  decoratorsByPath: ReactDecoratorsByPath,
+  decoratorsByPath: ReactDecorators,
   fixturePath: string
 ) {
   return Object.keys(decoratorsByPath)
@@ -29,7 +29,7 @@ function getParentPath(nestedPath: string) {
 }
 
 function getSortedDecorators(
-  decoratorsByPath: ReactDecoratorsByPath
+  decoratorsByPath: ReactDecorators
 ): ReactDecorator[] {
   return sortPathsByDepthAsc(Object.keys(decoratorsByPath)).map(
     decoratorPath => decoratorsByPath[decoratorPath]

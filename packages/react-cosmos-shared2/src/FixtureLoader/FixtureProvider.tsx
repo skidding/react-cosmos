@@ -3,7 +3,7 @@ import { FixtureState, SetFixtureState } from '../fixtureState';
 import {
   getSortedDecoratorsForFixturePath,
   ReactDecorator,
-  ReactDecoratorsByPath,
+  ReactDecorators,
 } from '../react';
 import { FixtureId } from '../renderer';
 import { FixtureContext } from './FixtureContext';
@@ -13,7 +13,7 @@ type Props = {
   fixtureId: FixtureId;
   fixture: React.ReactNode;
   systemDecorators: ReactDecorator[];
-  userDecorators: ReactDecoratorsByPath;
+  userDecorators: ReactDecorators;
   fixtureState: FixtureState;
   setFixtureState: SetFixtureState;
   renderMessage?: (args: { msg: string }) => React.ReactNode;
@@ -56,7 +56,7 @@ export function FixtureProvider({
 function mergeDecorators(
   fixtureId: FixtureId,
   systemDecorators: ReactDecorator[],
-  userDecorators: ReactDecoratorsByPath
+  userDecorators: ReactDecorators
 ) {
   return [
     ...systemDecorators,

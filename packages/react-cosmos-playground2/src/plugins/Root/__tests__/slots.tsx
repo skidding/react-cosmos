@@ -18,7 +18,7 @@ function registerTestPlugins() {
     loadCache: () => Promise.resolve(null),
   });
   mockRouter({
-    getSelectedFixtureId: () => ({ path: 'foo.js', name: null }),
+    getSelectedFixtureId: () => ({ path: 'foo.js' }),
   });
   mockCore({
     getFixtureFileVars: () => ({

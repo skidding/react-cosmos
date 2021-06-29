@@ -11,7 +11,7 @@ it('collapses one outer dir', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'src/Dashboard.fixture.js', name: null },
+              fixtureId: { path: 'src/Dashboard.fixture.js' },
             },
           },
         },
@@ -24,7 +24,7 @@ it('collapses one outer dir', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'src/Dashboard.fixture.js', name: null },
+          fixtureId: { path: 'src/Dashboard.fixture.js' },
         },
       },
     },
@@ -85,10 +85,7 @@ it('collapses multiple outer dirs', () => {
                   Dashboard: {
                     data: {
                       type: 'fixture',
-                      fixtureId: {
-                        path: 'src/ui/admin/Dashboard.fixture.js',
-                        name: null,
-                      },
+                      fixtureId: { path: 'src/ui/admin/Dashboard.fixture.js' },
                     },
                   },
                 },
@@ -105,7 +102,7 @@ it('collapses multiple outer dirs', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'src/ui/admin/Dashboard.fixture.js', name: null },
+          fixtureId: { path: 'src/ui/admin/Dashboard.fixture.js' },
         },
       },
     },

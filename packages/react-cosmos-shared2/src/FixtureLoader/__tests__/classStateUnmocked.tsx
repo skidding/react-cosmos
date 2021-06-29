@@ -13,12 +13,13 @@ import {
   anyProps,
   getClassState,
 } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: <Counter />,
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'captures initial state',

@@ -13,19 +13,15 @@ export function isValidFixtureSelected(context: RendererCoreContext) {
     return false;
   }
 
-  const fixtureNames = fixtures[fixtureId.path];
-  return fixtureNames === null
-    ? doesFixtureIdMatchUnnamedFixture(fixtureId)
-    : doesFixtureIdMatchNamedFixtures(fixtureId, fixtureNames);
+  const fixtureItem = fixtures[fixtureId.path];
+  return fixtureItem.type === 'multi'
+    ? matchFixtureName(fixtureId, fixtureItem.fixtureNames)
+    : fixtureId.name === undefined;
 }
 
-function doesFixtureIdMatchUnnamedFixture(fixtureId: FixtureId) {
-  return fixtureId.name === null;
-}
-
-function doesFixtureIdMatchNamedFixtures(
-  fixtureId: FixtureId,
-  fixtureNames: string[]
-) {
-  return fixtureId.name !== null && fixtureNames.indexOf(fixtureId.name) !== -1;
+function matchFixtureName(fixtureId: FixtureId, fixtureNames: string[]) {
+  return (
+    // TODO: Test when fixtureId.name === undefined
+    fixtureId.name === undefined || fixtureNames.indexOf(fixtureId.name) !== -1
+  );
 }

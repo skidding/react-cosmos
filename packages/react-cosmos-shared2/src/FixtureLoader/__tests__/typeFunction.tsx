@@ -1,12 +1,13 @@
 import React from 'react';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: () => <input type="text" />,
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'collects no props fixture state',

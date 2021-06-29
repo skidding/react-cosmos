@@ -3,13 +3,14 @@ import { createValues } from '../../fixtureState';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { anyProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtureId = { path: 'first', name: null };
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'collects fixture state for interesting string element type',
-  { rendererId, fixtures: { first: <input type="text" /> } },
+  { rendererId, fixtures: wrapFixtures({ first: <input type="text" /> }) },
   async ({ selectFixture, fixtureStateChange }) => {
     await selectFixture({ rendererId, fixtureId, fixtureState: {} });
     await fixtureStateChange({
@@ -29,7 +30,7 @@ testFixtureLoader(
 
 testFixtureLoader(
   'collects no fixture state for uninteresting string element type',
-  { rendererId, fixtures: { first: <div>yo</div> } },
+  { rendererId, fixtures: wrapFixtures({ first: <div>yo</div> }) },
   async ({ selectFixture, fixtureStateChange }) => {
     await selectFixture({ rendererId, fixtureId, fixtureState: {} });
     await fixtureStateChange({

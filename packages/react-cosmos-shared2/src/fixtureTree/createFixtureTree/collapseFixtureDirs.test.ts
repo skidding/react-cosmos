@@ -34,10 +34,7 @@ it('collapses fixtures dir', () => {
               Dashboard: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'ui/__fixtures__/Dashboard.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'ui/__fixtures__/Dashboard.js' },
                 },
               },
             },
@@ -75,10 +72,7 @@ it('collapses fixtures dir', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: {
-                path: 'ui/__fixtures__/Dashboard.js',
-                name: null,
-              },
+              fixtureId: { path: 'ui/__fixtures__/Dashboard.js' },
             },
           },
         },
@@ -101,10 +95,7 @@ it('collapses fixtures dir with sibling', () => {
               Dashboard: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'ui/__fixtures__/Dashboard.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'ui/__fixtures__/Dashboard.js' },
                 },
               },
             },
@@ -115,10 +106,7 @@ it('collapses fixtures dir with sibling', () => {
               Button: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'ui/shared/Button.fixture.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'ui/shared/Button.fixture.js' },
                 },
               },
             },
@@ -139,10 +127,7 @@ it('collapses fixtures dir with sibling', () => {
               Button: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'ui/shared/Button.fixture.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'ui/shared/Button.fixture.js' },
                 },
               },
             },
@@ -150,10 +135,7 @@ it('collapses fixtures dir with sibling', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: {
-                path: 'ui/__fixtures__/Dashboard.js',
-                name: null,
-              },
+              fixtureId: { path: 'ui/__fixtures__/Dashboard.js' },
             },
           },
         },
@@ -173,7 +155,7 @@ it('collapses fixtures dirs at different levels', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: { path: '__fixtures__/Dashboard.js', name: null },
+              fixtureId: { path: '__fixtures__/Dashboard.js' },
             },
           },
         },
@@ -187,10 +169,7 @@ it('collapses fixtures dirs at different levels', () => {
               Button: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'shared/__fixtures__/Button.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'shared/__fixtures__/Button.js' },
                 },
               },
             },
@@ -205,7 +184,7 @@ it('collapses fixtures dirs at different levels', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: '__fixtures__/Dashboard.js', name: null },
+          fixtureId: { path: '__fixtures__/Dashboard.js' },
         },
       },
       shared: {
@@ -214,7 +193,7 @@ it('collapses fixtures dirs at different levels', () => {
           Button: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'shared/__fixtures__/Button.js', name: null },
+              fixtureId: { path: 'shared/__fixtures__/Button.js' },
             },
           },
         },

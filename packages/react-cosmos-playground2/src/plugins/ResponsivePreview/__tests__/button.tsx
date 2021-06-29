@@ -12,7 +12,7 @@ beforeEach(() => jest.isolateModules(() => require('..')));
 
 afterEach(resetPlugins);
 
-const fixtureId = { path: 'foo.js', name: null };
+const fixtureId = { path: 'foo.js' };
 
 function loadTestPlugins() {
   loadPlugins();

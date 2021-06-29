@@ -21,13 +21,13 @@ describe('Native', () => {
     });
 
     it('has fixture paths', () => {
-      userDepsContainsModule('src/__fixtures__/HelloWorld.ts');
-      userDepsContainsModule('src/Counter/Counter.fixture.tsx');
-      userDepsContainsModule('src/WelcomeMessage/WelcomeMessage.fixture.tsx');
+      containsDynamicImport('src/__fixtures__/HelloWorld.ts');
+      containsDynamicImport('src/Counter/Counter.fixture.tsx');
+      containsDynamicImport('src/WelcomeMessage/WelcomeMessage.fixture.tsx');
     });
 
     it('has decorator paths', () => {
-      userDepsContainsModule('src/WelcomeMessage/cosmos.decorator.tsx');
+      containsImport('src/WelcomeMessage/cosmos.decorator.tsx');
     });
   });
 });
@@ -36,9 +36,16 @@ function getUserDepsFile() {
   return cy.readFile('example/cosmos.userdeps.js');
 }
 
-function userDepsContainsModule(modulePath) {
+function containsImport(modulePath) {
   getUserDepsFile().should(
     'match',
-    new RegExp(`import (fixture|decorator)[0-9]+ from './${modulePath}'`)
+    new RegExp(`import [a-z0-9]+ from './${modulePath}'`)
+  );
+}
+
+function containsDynamicImport(modulePath) {
+  getUserDepsFile().should(
+    'match',
+    new RegExp(`import\\('./${modulePath}'\\)`)
   );
 }

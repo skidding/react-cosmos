@@ -4,6 +4,7 @@ import { ReactTestRenderer, ReactTestRendererJSON } from 'react-test-renderer';
 import { createValue } from '../../fixtureState';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 import { useValue } from '../useValue';
 
 type CreateFixtureArgs = {
@@ -35,14 +36,14 @@ function createFixtures({
       </>
     );
   };
-  return {
+  return wrapFixtures({
     first: <MyComponent />,
-  };
+  });
 }
 
 const rendererId = uuid();
 const fixtures = createFixtures();
-const fixtureId = { path: 'first', name: null };
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'preserves fixture state change (via setter) on default value change',

@@ -1,4 +1,4 @@
-import { getFixtureNamesByPath } from 'react-cosmos-shared2/react';
+import { getFixtureListFromExports } from 'react-cosmos-shared2/react';
 import { FixtureId } from 'react-cosmos-shared2/renderer';
 import {
   stringifyPlaygroundUrlQuery,
@@ -23,14 +23,14 @@ export function getFixtureUrlsSync({ cosmosConfig, fullScreen = false }: Args) {
     fixtureUrls.push(createFixtureUrl(host, fixtureId, fullScreen));
   }
 
-  const { fixtureExportsByPath } = getUserModules(cosmosConfig);
-  const fixtureNamesByPath = getFixtureNamesByPath(fixtureExportsByPath);
-  Object.keys(fixtureNamesByPath).forEach(fixturePath => {
-    const fixtureNames = fixtureNamesByPath[fixturePath];
-    if (fixtureNames === null) {
-      pushFixtureUrl({ path: fixturePath, name: null });
-    } else {
-      fixtureNames.forEach(fixtureName => {
+  const { fixtures } = getUserModules(cosmosConfig);
+  const fixtureList = getFixtureListFromExports(fixtures);
+  Object.keys(fixtureList).forEach(fixturePath => {
+    const fixtureItem = fixtureList[fixturePath];
+    if (fixtureItem.type === 'single') {
+      pushFixtureUrl({ path: fixturePath });
+    } else if (fixtureItem.type === 'multi') {
+      fixtureItem.fixtureNames.forEach(fixtureName => {
         pushFixtureUrl({ path: fixturePath, name: fixtureName });
       });
     }

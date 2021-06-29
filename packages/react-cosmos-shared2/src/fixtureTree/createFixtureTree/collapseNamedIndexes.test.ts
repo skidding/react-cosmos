@@ -11,7 +11,7 @@ it('collapses named index fixture', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'Dashboard/Dashboard.fixture.js', name: null },
+              fixtureId: { path: 'Dashboard/Dashboard.fixture.js' },
             },
           },
         },
@@ -24,7 +24,7 @@ it('collapses named index fixture', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'Dashboard/Dashboard.fixture.js', name: null },
+          fixtureId: { path: 'Dashboard/Dashboard.fixture.js' },
         },
       },
     },
@@ -45,10 +45,7 @@ it('collapses nested named index fixture', () => {
               Dashboard: {
                 data: {
                   type: 'fixture',
-                  fixtureId: {
-                    path: 'ui/Dashboard/Dashboard.fixture.js',
-                    name: null,
-                  },
+                  fixtureId: { path: 'ui/Dashboard/Dashboard.fixture.js' },
                 },
               },
             },
@@ -66,10 +63,7 @@ it('collapses nested named index fixture', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: {
-                path: 'ui/Dashboard/Dashboard.fixture.js',
-                name: null,
-              },
+              fixtureId: { path: 'ui/Dashboard/Dashboard.fixture.js' },
             },
           },
         },
@@ -89,7 +83,7 @@ it('collapses named index fixture (case insensitive)', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'dashboard/Dashboard.fixture.js', name: null },
+              fixtureId: { path: 'dashboard/Dashboard.fixture.js' },
             },
           },
         },
@@ -102,7 +96,7 @@ it('collapses named index fixture (case insensitive)', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'dashboard/Dashboard.fixture.js', name: null },
+          fixtureId: { path: 'dashboard/Dashboard.fixture.js' },
         },
       },
     },

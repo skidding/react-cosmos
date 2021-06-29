@@ -4,8 +4,8 @@ import {
   FixtureLoader,
 } from 'react-cosmos-shared2/FixtureLoader';
 import {
-  ReactDecoratorsByPath,
-  ReactFixtureExportsByPath,
+  ReactDecorators,
+  ReactFixtureWrappers,
 } from 'react-cosmos-shared2/react';
 import * as ReactNative from 'react-native';
 import parse from 'url-parse';
@@ -25,8 +25,8 @@ const rendererId = 'native-renderer';
 
 type Props = {
   rendererConfig: NativeRendererConfig;
-  fixtures: ReactFixtureExportsByPath;
-  decorators: ReactDecoratorsByPath;
+  fixtures: ReactFixtureWrappers;
+  decorators: ReactDecorators;
 };
 
 export function NativeFixtureLoader({

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FixtureLoader } from 'react-cosmos-shared2/FixtureLoader';
 import {
-  ReactDecoratorsByPath,
-  ReactFixtureExportsByPath,
+  ReactDecorators,
+  ReactFixtureWrappers,
 } from 'react-cosmos-shared2/react';
 import { ErrorCatch } from './ErrorCatch';
 import { rendererConnect } from './rendererConnect';
@@ -11,8 +11,8 @@ import { renderMessage } from './renderMessage';
 import { selectedFixtureId } from './selectedFixtureId';
 
 type Props = {
-  fixtures: ReactFixtureExportsByPath;
-  decorators: ReactDecoratorsByPath;
+  fixtures: ReactFixtureWrappers;
+  decorators: ReactDecorators;
   onErrorReset?: () => unknown;
 };
 export function DomFixtureLoader({

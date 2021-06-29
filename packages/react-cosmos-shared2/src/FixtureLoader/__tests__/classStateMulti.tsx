@@ -10,9 +10,10 @@ import {
   anyProps,
   getClassState,
 } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: (
     <>
       <StateMock state={{ count: 5 }}>
@@ -23,8 +24,8 @@ const fixtures = {
       </StateMock>
     </>
   ),
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'captures mocked state from multiple instances',

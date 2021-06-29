@@ -5,17 +5,18 @@ import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { HelloMessage } from '../testHelpers/components';
 import { anyProps, getProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: (
     <>
       <HelloMessage name="Bianca" />
       <HelloMessage name="B" />
     </>
   ),
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'captures multiple props instances',

@@ -60,7 +60,7 @@ function loadTestPlugins() {
   return render(
     <>
       <RendererActionSlot
-        slotProps={{ fixtureId: { path: 'foo.js', name: null } }}
+        slotProps={{ fixtureId: { path: 'foo.js' } }}
         plugOrder={[]}
       />
       <Slot name="rendererPreviewOuter">

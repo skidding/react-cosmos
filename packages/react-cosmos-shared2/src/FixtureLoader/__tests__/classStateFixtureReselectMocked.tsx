@@ -5,16 +5,17 @@ import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { Counter } from '../testHelpers/components';
 import { anyClassState, anyProps } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 const rendererId = uuid();
-const fixtures = {
+const fixtures = wrapFixtures({
   first: (
     <StateMock state={{ count: 5 }}>
       <Counter />
     </StateMock>
   ),
-};
-const fixtureId = { path: 'first', name: null };
+});
+const fixtureId = { path: 'first' };
 
 // NOTE: This is a regression test that was created for a bug that initally
 // slipped unnoticed in https://github.com/react-cosmos/react-cosmos/pull/893.

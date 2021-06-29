@@ -1,15 +1,18 @@
 import React from 'react';
 import { createFixtureTree } from 'react-cosmos-shared2/fixtureTree';
-import { FixtureId } from 'react-cosmos-shared2/renderer';
+import { FixtureId, FixtureList } from 'react-cosmos-shared2/renderer';
 import { useValue } from 'react-cosmos/fixture';
 import { TreeExpansion } from '../../../shared/treeExpansion';
 import { FixtureTree } from './FixtureTree';
 
-const fixtures = {
-  'src/Dashboard.ts': null,
-  'src/Settings.ts': null,
-  'src/shared/Dropdown.ts': null,
-  'src/shared/Button.ts': ['normal', 'disabled'],
+const fixtures: FixtureList = {
+  'src/Dashboard.ts': { type: 'single' },
+  'src/Settings.ts': { type: 'single' },
+  'src/shared/Dropdown.ts': { type: 'single' },
+  'src/shared/Button.ts': {
+    type: 'multi',
+    fixtureNames: ['normal', 'disabled'],
+  },
 };
 const rootNode = createFixtureTree({
   fixtures,

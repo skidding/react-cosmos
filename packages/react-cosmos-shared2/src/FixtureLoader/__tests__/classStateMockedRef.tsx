@@ -8,6 +8,7 @@ import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
 import { Counter } from '../testHelpers/components';
 import { getClassState } from '../testHelpers/fixtureState';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 
 let counterRef: null | Counter = null;
 beforeEach(() => {
@@ -15,20 +16,21 @@ beforeEach(() => {
 });
 
 const rendererId = uuid();
-const getFixtures = () => ({
-  first: (
-    <StateMock state={{ count: 5 }}>
-      <Counter
-        ref={elRef => {
-          if (elRef) {
-            counterRef = elRef;
-          }
-        }}
-      />
-    </StateMock>
-  ),
-});
-const fixtureId = { path: 'first', name: null };
+const getFixtures = () =>
+  wrapFixtures({
+    first: (
+      <StateMock state={{ count: 5 }}>
+        <Counter
+          ref={elRef => {
+            if (elRef) {
+              counterRef = elRef;
+            }
+          }}
+        />
+      </StateMock>
+    ),
+  });
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'captures component state changes',

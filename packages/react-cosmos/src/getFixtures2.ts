@@ -5,10 +5,10 @@ import {
   flattenFixtureTree,
 } from 'react-cosmos-shared2/fixtureTree';
 import {
-  getFixtureNamesByPath,
+  getFixtureListFromExports,
   getSortedDecoratorsForFixturePath,
   ReactDecorator,
-  ReactDecoratorsByPath,
+  ReactDecorators,
   ReactFixture,
   ReactFixtureMap,
 } from 'react-cosmos-shared2/react';
@@ -38,20 +38,18 @@ export function getFixtures2(cosmosConfig: CosmosConfig) {
   const { fixturesDir, fixtureFileSuffix, rootDir } = cosmosConfig;
 
   const fixtureInfo: FixtureApi[] = [];
-  const { fixtureExportsByPath, decoratorsByPath } = getUserModules(
-    cosmosConfig
-  );
-  const fixtureNamesByPath = getFixtureNamesByPath(fixtureExportsByPath);
+  const { fixtures, decorators } = getUserModules(cosmosConfig);
+  const fixtureList = getFixtureListFromExports(fixtures);
   const fixtureTree = createFixtureTree({
-    fixtures: fixtureNamesByPath,
+    fixtures: fixtureList,
     fixturesDir,
     fixtureFileSuffix,
   });
   const flatFixtureTree = flattenFixtureTree(fixtureTree);
   flatFixtureTree.forEach(({ fileName, fixtureId, name, parents }) => {
-    const fixtureExport = fixtureExportsByPath[fixtureId.path];
+    const fixtureExport = fixtures[fixtureId.path];
     const fixture: ReactFixture =
-      fixtureId.name === null
+      fixtureId.name === undefined
         ? fixtureExport
         : (fixtureExport as ReactFixtureMap)[fixtureId.name];
 
@@ -64,7 +62,7 @@ export function getFixtures2(cosmosConfig: CosmosConfig) {
       getElement: createFixtureElementGetter(
         fixture,
         fixtureId.path,
-        decoratorsByPath
+        decorators
       ),
       name,
       parents,
@@ -101,7 +99,7 @@ function getPlaygroundHost({ hostname, port, https }: CosmosConfig) {
 function createFixtureElementGetter(
   fixture: ReactFixture,
   fixturePath: string,
-  decoratorsByPath: ReactDecoratorsByPath
+  decoratorsByPath: ReactDecorators
 ): () => React.ReactElement<any> {
   const decorators: ReactDecorator[] = getSortedDecoratorsForFixturePath(
     fixturePath,

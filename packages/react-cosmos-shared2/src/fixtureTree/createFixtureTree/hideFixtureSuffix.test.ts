@@ -8,7 +8,7 @@ it('hides fixture suffix', () => {
       'Dashboard.fixture': {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'Dashboard.fixture.js', name: null },
+          fixtureId: { path: 'Dashboard.fixture.js' },
         },
       },
     },
@@ -19,7 +19,7 @@ it('hides fixture suffix', () => {
       Dashboard: {
         data: {
           type: 'fixture',
-          fixtureId: { path: 'Dashboard.fixture.js', name: null },
+          fixtureId: { path: 'Dashboard.fixture.js' },
         },
       },
     },
@@ -37,7 +37,7 @@ it('hides nested fixture suffix', () => {
           'Dashboard.fixture': {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'ui/Dashboard.fixture.js', name: null },
+              fixtureId: { path: 'ui/Dashboard.fixture.js' },
             },
           },
         },
@@ -53,7 +53,7 @@ it('hides nested fixture suffix', () => {
           Dashboard: {
             data: {
               type: 'fixture',
-              fixtureId: { path: 'ui/Dashboard.fixture.js', name: null },
+              fixtureId: { path: 'ui/Dashboard.fixture.js' },
             },
           },
         },

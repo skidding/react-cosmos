@@ -1,6 +1,6 @@
 import {
-  ReactDecoratorsByPath,
-  ReactFixtureExportsByPath,
+  ReactDecorators,
+  ReactFixtureWrappers,
 } from 'react-cosmos-shared2/react';
 import { DomRendererConfig } from '../../../shared/rendererConfig';
 
@@ -8,5 +8,5 @@ import { DomRendererConfig } from '../../../shared/rendererConfig';
 export const rendererConfig: DomRendererConfig = {
   containerQuerySelector: null,
 };
-export const fixtures: ReactFixtureExportsByPath = {};
-export const decorators: ReactDecoratorsByPath = {};
+export const fixtures: ReactFixtureWrappers = {};
+export const decorators: ReactDecorators = {};

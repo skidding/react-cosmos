@@ -8,13 +8,18 @@ import {
   onRendererCore,
 } from '../../../testHelpers/pluginMocks';
 import { mockRendererReady, mockFixtureStateChange } from '../testHelpers';
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 
 beforeEach(() => jest.isolateModules(() => require('..')));
 
 afterEach(resetPlugins);
 
-const fixtures = { 'ein.js': null, 'zwei.js': null, 'drei.js': null };
-const fixtureId = { path: 'zwei.js', name: null };
+const fixtures: FixtureList = {
+  'ein.js': { type: 'single' },
+  'zwei.js': { type: 'single' },
+  'drei.js': { type: 'single' },
+};
+const fixtureId = { path: 'zwei.js' };
 const fixtureState = { props: [] };
 const expectedFixtureState = {
   props: [],
@@ -28,7 +33,7 @@ function registerTestPlugins() {
 
 function mockSelectedFixture() {
   mockRouter({
-    getSelectedFixtureId: () => ({ path: 'zwei.js', name: null }),
+    getSelectedFixtureId: () => ({ path: 'zwei.js' }),
   });
 }
 
@@ -71,7 +76,7 @@ it('posts "setFixtureState" renderer requests', async () => {
       type: 'setFixtureState',
       payload: {
         rendererId: 'mockRendererId1',
-        fixtureId: { path: 'zwei.js', name: null },
+        fixtureId: { path: 'zwei.js' },
         fixtureState: expectedFixtureState,
       },
     })
@@ -82,7 +87,7 @@ it('posts "setFixtureState" renderer requests', async () => {
       type: 'setFixtureState',
       payload: {
         rendererId: 'mockRendererId2',
-        fixtureId: { path: 'zwei.js', name: null },
+        fixtureId: { path: 'zwei.js' },
         fixtureState: expectedFixtureState,
       },
     })

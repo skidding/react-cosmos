@@ -1,4 +1,5 @@
 import { waitFor } from '@testing-library/dom';
+import { FixtureList } from 'react-cosmos-shared2/renderer';
 import { loadPlugins, resetPlugins } from 'react-plugin';
 import {
   mockRouter,
@@ -13,7 +14,11 @@ beforeEach(() => jest.isolateModules(() => require('..')));
 afterEach(resetPlugins);
 
 const rendererId = 'mockRendererId1';
-const fixtures = { 'ein.js': null, 'zwei.js': null, 'drei.js': null };
+const fixtures: FixtureList = {
+  'ein.js': { type: 'single' },
+  'zwei.js': { type: 'single' },
+  'drei.js': { type: 'single' },
+};
 const rendererReadyMsg = createRendererReadyResponse(rendererId, fixtures);
 
 function registerTestPlugins() {

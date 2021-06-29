@@ -1,4 +1,4 @@
-import { FixtureNamesByPath } from '../../renderer';
+import { FixtureList } from '../../renderer';
 import { sortTreeChildren } from '../../util';
 import { FixtureTreeNode } from '../shared/types';
 import { collapseFixtureDirs } from './collapseFixtureDirs';
@@ -13,7 +13,7 @@ export function createFixtureTree({
   fixturesDir,
   fixtureFileSuffix,
 }: {
-  fixtures: FixtureNamesByPath;
+  fixtures: FixtureList;
   fixturesDir: string;
   fixtureFileSuffix: string;
 }): FixtureTreeNode {

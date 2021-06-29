@@ -3,6 +3,7 @@ import React from 'react';
 import { ReactTestRenderer, ReactTestRendererJSON } from 'react-test-renderer';
 import { uuid } from '../../util';
 import { testFixtureLoader } from '../testHelpers';
+import { wrapFixtures } from '../testHelpers/wrapFixture';
 import { useSelect } from '../useSelect';
 
 type Option = 'first' | 'second' | 'third';
@@ -23,14 +24,14 @@ function createFixtures({ defaultValue }: { defaultValue: Option }) {
       />
     );
   };
-  return {
+  return wrapFixtures({
     first: <MyComponent />,
-  };
+  });
 }
 
 const rendererId = uuid();
 const fixtures = createFixtures({ defaultValue: 'first' });
-const fixtureId = { path: 'first', name: null };
+const fixtureId = { path: 'first' };
 
 testFixtureLoader(
   'renders fixture',
