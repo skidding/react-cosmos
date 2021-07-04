@@ -35,7 +35,7 @@ Create `index.cosmos.tsx` next to your existing index module.
 
 ```jsx
 import { mountDomRenderer } from 'react-cosmos/dom';
-import { decorators, fixtures, rendererConfig } from './cosmos.userdeps';
+import { decorators, fixtures, rendererConfig } from './cosmos.userdeps.js';
 
 mountDomRenderer({ rendererConfig, decorators, fixtures });
 
@@ -67,6 +67,16 @@ routes: [
   { src: '/_renderer.html', dest: '/index.cosmos.html' },
   // Other routes...
 ],
+```
+
+Enable the `polyfillNode` flag in the `packageOptions` of your Snowpack config.
+
+```js
+// snowpack.config.js
+packageOptions: {
+  polyfillNode: true,
+  // Other package options...
+},
 ```
 
 ### 4. Start React Cosmos with Snowpack

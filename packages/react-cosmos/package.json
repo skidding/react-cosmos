@@ -33,6 +33,22 @@
     "webpack-dev-middleware": "^4.3.0",
     "yargs": "^16.2.0"
   },
+  "peerDependencies": {
+    "react": ">= 16.8",
+    "react-dom": ">= 16.8",
+    "webpack": ">= 4.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "webpack": {
+      "optional": true
+    }
+  },
   "bin": {
     "cosmos": "./bin/cosmos.js",
     "cosmos-export": "./bin/cosmos-export.js",

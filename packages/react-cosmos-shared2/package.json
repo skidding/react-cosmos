@@ -10,5 +10,13 @@
     "react-element-to-jsx-string": "^14.3.2",
     "react-is": "^17.0.2",
     "socket.io-client": "2.2.0"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   }
 }
